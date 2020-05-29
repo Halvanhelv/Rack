@@ -14,7 +14,8 @@ class App
   private
 
   def process_request(env)
-    time = TimeFormat.new(env).call
+    time = TimeFormat.new(env)
+    time.call
     if time.valid?
       response(200, time.result)
     else
