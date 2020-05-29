@@ -5,7 +5,7 @@ class App
   def call(env)
     env = Rack::Request.new(env)
     if valid_url(env)
-      params(env.params['format'])
+      process_request(env.params['format'])
     else
       response(404, "Такой страницы не существует\n")
     end
@@ -13,9 +13,9 @@ class App
 
   private
 
-  def params(env)
-    time = TimeFormat.new(env)
-    if time.invalid_params.empty?
+  def process_request(env)
+    time = TimeFormat.new(env).call
+    if time.valid?
       response(200, time.result)
     else
       response(400, "Unknown time format #{time.invalid_params}")
