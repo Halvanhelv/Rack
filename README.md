@@ -1,1 +1,1 @@
-Приложение для показа времени в указанном в строке запроса формате
+Application for displaying time in the format specified in the query string

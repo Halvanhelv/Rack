@@ -7,7 +7,7 @@ class App
     if valid_url(env)
       process_request(env.params['format'])
     else
-      response(404, "Такой страницы не существует\n")
+      response(404, "This page does not exist\n")
     end
   end
 
